@@ -14,12 +14,12 @@ import io.restassured.response.Response;
 
 public class AutomateGet {
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void validate_get_status_code() {
 
 		given().baseUri("https://api.getpostman.com")
 				.header("X-Api-Key", "PMAK-6334a0323ce9283aae75733b-c31406c4a94e35ab5d0cce1793d1678e7d").when()
-				.get("/workspaces").then().log().all().assertThat().statusCode(201);
+				.get("/workspaces").then().log().all().assertThat().statusCode(200);
 
 	}
 
@@ -70,7 +70,7 @@ public class AutomateGet {
 
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void hamcrest_assert_on_extracted_response() {
 
 		String name = given().baseUri("https://api.getpostman.com")
@@ -87,7 +87,7 @@ public class AutomateGet {
 
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	  public void hamcrest_assert_on_extracted_response1() {
 		
 		  given().

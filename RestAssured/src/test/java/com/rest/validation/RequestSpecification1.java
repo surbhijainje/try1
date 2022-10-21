@@ -5,11 +5,15 @@ import static io.restassured.RestAssured.with;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.is;
+
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static io.restassured.RestAssured.*;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.testng.collections.Lists;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -68,13 +72,21 @@ public class RequestSpecification1 {
 
 	@Test(enabled = true)
 	public void validate_response_body() {
+		
+		List<String> collection = Lists.newArrayList("APITESTING", "APIBATCH_9PM", "My Workspace");
 
 		Response response = get("/workspaces").then().extract().response();
+		
+		System.out.println(collection);
+		
+		assertThat(collection, hasItems("APITESTING", "APIBATCH_9PM", "My Workspac2"));
 
 		/*
 		 * assertThat(response.body("workspaces.name", hasItems("APITESTING",
 		 * "APIBATCH_9PM", "My Workspace")) );
 		 */
+		
+		
 
 	}
 

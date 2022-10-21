@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.rest.validation.RequestSpecification1">
+      <class name="com.rest.validation.AutomationPost">
         <methods>
           <include name="beforeClass"/>
-          <include name="validate_response_body"/>
+          <include name="validate_post_map"/>
         </methods>
-      </class> <!-- com.rest.validation.RequestSpecification1 -->
+      </class> <!-- com.rest.validation.AutomationPost -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
