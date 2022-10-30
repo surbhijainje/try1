@@ -28,7 +28,7 @@ public class AutomateComplexRequest {
 
 		RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder().
 
-		            setBaseUri("https://5a4731ea-098b-4c2d-a850-183096063d34.mock.pstmn.io").
+		            setBaseUri("https://d7562748-37aa-44fe-81ae-16abe93bcda2.mock.pstmn.io").
 		            addHeader("x-mock-match-request-body", "true").
 		            setContentType(ContentType.JSON).
 		            log(LogDetail.ALL);
@@ -102,7 +102,7 @@ public class AutomateComplexRequest {
 	mainHashMap.put("id", "0001");
 	mainHashMap.put("type", "donut");
 	mainHashMap.put("name", "Cake");
-	mainHashMap.put("ppu", "0.55");
+	mainHashMap.put("ppu", 0.55);
 	mainHashMap.put("batters",battersHashMap);
 	mainHashMap.put("topping", toppingArrayList);
 	
