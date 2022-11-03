@@ -3,12 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.rest.validation.AutomateComplexRequest">
+      <class name="com.rest.validation.Parameter">
         <methods>
-          <include name="validate_post_request_payload_complex_json"/>
-          <include name="beforeClass"/>
+          <include name="path_parameter"/>
         </methods>
-      </class> <!-- com.rest.validation.AutomateComplexRequest -->
+      </class> <!-- com.rest.validation.Parameter -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

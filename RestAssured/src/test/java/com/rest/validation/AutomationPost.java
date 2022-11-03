@@ -5,6 +5,8 @@ import static org.junit.Assert.assertThat;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeClass;
@@ -14,6 +16,8 @@ import  io.restassured.RestAssured;
 import  io.restassured.RestAssured.*;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.config.LogConfig;
+import static io.restassured.RestAssured.config;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -29,12 +33,20 @@ public class AutomationPost {
 		 * header("X-Api-Key",
 		 * "PMAK-6334a0323ce9283aae75733b-c31406c4a94e35ab5d0cce1793d1678e7d");
 		 */
+		
+		Set<String> headers = new HashSet<String>();
+		
+		headers.add("X-Api-Key");
+		headers.add("Accept");
 
 		RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder().
 
 		            setBaseUri("https://api.getpostman.com").
 		            addHeader("X-Api-Key", "PMAK-6334a0323ce9283aae75733b-c31406c4a94e35ab5d0cce1793d1678e7d").
-		            setContentType(ContentType.JSON).
+		             setContentType(ContentType.JSON).
+		             //blacklisting multiple values 
+		             setConfig(config.logConfig(LogConfig.logConfig().blacklistHeaders(headers))).
+	//handling single vale // setConfig(config.logConfig(LogConfig.logConfig().blacklistHeaders(headers))).
 		            log(LogDetail.ALL);
 		RestAssured.requestSpecification = requestSpecBuilder.build();
 		
@@ -74,8 +86,7 @@ public class AutomationPost {
 		 then().log().all().body("workspace.name", equalTo("RESTVALIDATION5"),
 				                   "workspace.id", matchesPattern("^[a-z0-9-]{36}$"));
 		
-	
-	  // System.out.println("workspace id :" workspaces[4].id);
+	   // System.out.println("workspace id :" workspaces[4].id);
 	}
 	
 	@Test(enabled=false)
@@ -123,7 +134,7 @@ public class AutomationPost {
 		
 		HashMap<String,String> nestedObject =new  HashMap<>();
 		
-		nestedObject.put("name", "workspace2");
+		nestedObject.put("name", "workspace5");
 		nestedObject.put("description", "workspace2 description");
 		nestedObject.put("type", "personal");
 		

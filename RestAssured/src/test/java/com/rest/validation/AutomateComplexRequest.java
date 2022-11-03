@@ -76,6 +76,7 @@ public class AutomateComplexRequest {
 	batterArrayList.add(batterHashMap1);
 	batterArrayList.add(batterHashMap2);
 	
+	//batters value
 	HashMap<String,List<HashMap<String,Object>>> battersHashMap = new HashMap<String,List<HashMap<String,Object>>>();
 		
 	battersHashMap.put("batter", batterArrayList);
@@ -94,6 +95,7 @@ public class AutomateComplexRequest {
 	toppingHashMap1.put("id", "5001");
 	toppingHashMap1.put("type","None");
 	
+	//toppings value
 	List<HashMap<String,Object>> toppingArrayList = new ArrayList<HashMap<String,Object>>();
 	toppingArrayList.add(toppingHashMap1);
 	toppingArrayList.add(toppingHashMap2);
