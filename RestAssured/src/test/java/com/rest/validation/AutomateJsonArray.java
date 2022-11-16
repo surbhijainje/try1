@@ -78,7 +78,8 @@ public class AutomateJsonArray {
 		
 		RestAssured.given().
 		           body(jsonList).
-		           when().post("/post").
+		           when()
+		           .post("/post").
 		           then().
 		           assertThat().
 		           body("msg", Matchers.equalTo("succesfully created data"));

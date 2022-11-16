@@ -8,15 +8,16 @@ import java.io.OutputStream;
 
 import org.testng.annotations.Test;
 
-import io.restassured.RestAssured;
+import static io.restassured.RestAssured.*;
+import io.restassured.http.ContentType;
 
 public class UploadFileAndDowloadFile {
 	
 	
-	@Test
+	//@Test
 	public void upload_file_multipart_form_data() {
 		
-		RestAssured.given().
+		given().
 		baseUri("https://postman-echo.com").
 		multiPart("file" , new File("add.txt")).
 		log().all().
@@ -28,14 +29,15 @@ public class UploadFileAndDowloadFile {
 	}
 	
 	
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void dowload_file() throws IOException {
 		
-		byte[] bytes=RestAssured.given().
-		baseUri("https://github.com").
+		byte[] bytes=given().
+		baseUri("https://raw.githubusercontent.com").
+		
 		log().all().
 		when().
-		  get("/appium-boneyard/sample-code/blob/master/sample-code/apps/ApiDemos/bin/ApiDemos-debug.apk").
+		  get("/appium-boneyard/sample-code/master/sample-code/apps/ApiDemos/bin/ApiDemos-debug.apk").
 		  then().
 		  log().all().
 		  extract().

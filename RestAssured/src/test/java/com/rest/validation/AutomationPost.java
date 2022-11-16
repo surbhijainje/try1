@@ -20,6 +20,7 @@ import io.restassured.config.LogConfig;
 import static io.restassured.RestAssured.config;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
+import io.restassured.mapper.ObjectMapper;
 import io.restassured.response.Response;
 
 public class AutomationPost {
@@ -63,8 +64,8 @@ public class AutomationPost {
 
 		ResponseSpecBuilder responseSpecBuilder = new ResponseSpecBuilder().
 				 expectStatusCode(200)
-				.expectContentType(ContentType.JSON).
-				 log(LogDetail.ALL);
+				.expectContentType(ContentType.JSON);
+				 
 
 		RestAssured.responseSpecification = responseSpecBuilder.build();
 
@@ -107,8 +108,16 @@ public class AutomationPost {
 		             body(payload).
 		             post("/workspaces");
 	
+	       int sc = response.getStatusCode();
+	       System.out.println(sc);
+	       System.out.println( response.getContentType());
+	       System.out.println(response.getBody());
+	
 	    assertThat(response.<String>path("workspace.name"), equalTo("HarshilWorkspace"));
 	    assertThat(response.<String>path("workspace.id"),  matchesPattern("^[a-z0-9-]{36}$"));
+	 
+	   
+	  
 	    
 	}
 	
@@ -126,7 +135,7 @@ public class AutomationPost {
 	}
 	
 	
-	@Test(enabled=true)
+	@Test(enabled=false)
 	public void validate_post_map() {
 		
 		
@@ -134,8 +143,8 @@ public class AutomationPost {
 		
 		HashMap<String,String> nestedObject =new  HashMap<>();
 		
-		nestedObject.put("name", "workspace5");
-		nestedObject.put("description", "workspace2 description");
+		nestedObject.put("name", "workspace testing");
+		nestedObject.put("description", "workspace testing description");
 		nestedObject.put("type", "personal");
 		
         mainObject.put("workspace", nestedObject);
@@ -145,6 +154,31 @@ public class AutomationPost {
 		             post("/workspaces");
 	
 	}
+	
+	@Test(enabled=true)
+	public void validate_post_map1() {
+		//ObjectMapper objectMapper =new ObjectMapper();
+		
+		HashMap<String,Object> mainObject1 =new  HashMap<>();
+		
+		HashMap<String,String> nestedObject =new  HashMap<>();
+		
+		nestedObject.put("name", "workspace testing");
+		nestedObject.put("description", "workspace testing description");
+		nestedObject.put("type", "personal");
+		
+		
+		
+        mainObject1.put("workspace", nestedObject);
+        
+        
+		
+	                 RestAssured.given().
+		             body(mainObject1).
+		             post("/workspaces");
+	
+	}
+	
 	
 	
 }

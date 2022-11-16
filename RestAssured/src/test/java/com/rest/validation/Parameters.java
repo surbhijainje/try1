@@ -2,6 +2,10 @@ package com.rest.validation;
 
 import org.testng.annotations.Test;
 
+import io.restassured.filter.log.LogDetail;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
+
 import static io.restassured.RestAssured.*;
 
 import java.util.HashMap;
@@ -10,7 +14,7 @@ public class Parameters {
 
 	
 	
-	@Test(enabled=false)
+	//@Test(enabled=false)
 	public void single_query_parameter() {
 		
 	    given().
@@ -27,7 +31,7 @@ public class Parameters {
 	}
 
 
-	@Test(enabled=false)
+	//@Test(enabled=false)
 	
 	public void multiple_query_parameter() {
 		
@@ -49,7 +53,7 @@ public class Parameters {
 		
 	}
 	
-@Test(enabled=true)
+//@Test(enabled=true)
 	
 	public void multiple_value_query_parameter() {
 		
@@ -72,7 +76,7 @@ public class Parameters {
 	}
 
   
-  @Test(enabled=false)
+ // @Test(enabled=false)
   public void path_parameter() {
 	  
 	  given().baseUri("https://reqres.in/").
@@ -87,5 +91,6 @@ public class Parameters {
 	  statusCode(200);
   }
 	
+ 
 
 }
