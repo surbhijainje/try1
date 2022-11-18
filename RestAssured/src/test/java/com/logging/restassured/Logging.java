@@ -19,7 +19,7 @@ public class Logging {
 			RestAssured.
 			        given().
 			             baseUri("https://api.getpostman.com").
-			             header("X-Api-Key","PMAK-6334a0323ce9283aae75733b-c31406c4a94e35ab5d0cce1793d1678e7d").
+			             header("X-Api-Key","PMAK-63758b6ca022c2466471302c-9f022157f20c8390b9fba45496766f7cca").
 			             log().headers().
 			       when().
 			             get("/workspaces").
@@ -45,7 +45,7 @@ public class Logging {
 			       when().
 			             get("/workspaces").
 			       then().
-			             // log().ifValidationFails().
+			              //log().ifValidationFails().
 			             statusCode(200).
 			             body("workspaces[0].name", Matchers.is(Matchers.equalTo("APITESTING")));
 			            		 
