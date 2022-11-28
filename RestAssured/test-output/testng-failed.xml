@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.rest.validation.WorkspacePojoTest">
+      <class name="com.rest.validation.ComplexPojoTest">
         <methods>
           <include name="beforeClass"/>
-          <include name="workspace_serialize_deserialize_datadriven" invocation-numbers="1"/>
+          <include name="complex_pojo_create_collection"/>
         </methods>
-      </class> <!-- com.rest.validation.WorkspacePojoTest -->
+      </class> <!-- com.rest.validation.ComplexPojoTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

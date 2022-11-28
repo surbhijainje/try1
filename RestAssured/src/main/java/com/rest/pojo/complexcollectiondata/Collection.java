@@ -15,6 +15,7 @@ public class Collection {
 		
 	this.info=info;
 	this.item=item;
+	
 	}
 	
 	public Info getInfo() {
